@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>Wardener - PC Health Plant Care</title>
+</head>
+<body>
+    <header>
+        <h1>Wardener</h1>
+        <p class="subtitle">Nurture your virtual plant by keeping your PC cool...<span style="margin-left: 10px;"> <button id="themeToggle" class="secondary-btn">🌙 Dark Mode</button></p>
+    </header>
+    
+
+    <div class="dashboard">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Your Digital Plant</div>
+                <!-- Add to the plant card -->
+                <div class="plant-options" id="plantOptions">
+                    <!-- <button class="secondary-btn" id="changePlantBtn"></button> -->
+                    <select id="plantType" class="secondary-btn">
+                        <option value="default">Change Plant</option>
+                        <option value="cactus">Cactus</option>
+                        <option value="fern">Fern</option>
+                        <option value="flower">Flowering Plant</option>
+                    </select>
+                </div>
+            </div>
+            <div class="plant-container">
+                <div class="plant">
+                    <div class="stem"></div>
+                    <div class="leaf leaf-1"></div>
+                    <div class="leaf leaf-2"></div>
+                    <div class="leaf leaf-3"></div>
+                    <div class="flower"></div>
+                </div>
+                <div class="pot"></div>
+                <div class="water-animation" id="waterAnimation"></div>
+            </div>
+            <div class="actions">
+                <button class="primary-btn" id="waterBtn">Water Plant</button>
+                <button class="secondary-btn" id="coolDownBtn">Cool Down</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">PC Health Stats</div>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">CPU Temperature:</span>
+                    <span class="stat-value temp-value" id="cpuTemp">--°C</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="tempProgress"></div>
+                </div>
+
+                <div class="stat-item">
+                    <span class="stat-label">CPU Usage:</span>
+                    <span class="stat-value" id="cpuUsage">--%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="usageProgress"></div>
+                </div>
+
+                <div class="stat-item">
+                    <span class="stat-label">Memory Usage:</span>
+                    <span class="stat-value" id="memoryUsage">--%</span>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="memoryProgress"></div>
+                </div>
+
+                <div class="notification" id="notification">
+                    Your CPU is overheating! Close some apps to cool down your plant.
+                </div>
+            </div>
+        </div>
+         <div class="card">
+            <div class="card-header">
+                <div class="card-title">Performance History</div>
+            </div>
+            <div class="chart-container">
+                <canvas id="tempChart"></canvas>
+            </div>
+        </div>
+        <div class="card" id="achievementsCard">
+            <div class="card-header">
+                <div class="card-title">Achievements</div>
+                <button id="arBtn" class="secondary-btn" style="margin-left: 12%; padding-left: 0%;">🌿View in AR</button>
+            </div>
+            <div class="achievements-list" id="achievementsList">
+                <!-- Achievements will be populated here -->
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Daily Challenge</div>
+            </div>
+            <div class="challenge">
+                <p>Keep CPU temp below 60°C for 1 hour</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="challengeProgress" style="width: 0%"></div>
+                </div>
+                <p class="reward">Reward: 20 points</p>
+            </div>
+        </div>
+    </div>
+    <div class="dialog-overlay" id="coolDownDialog">
+    <div class="card dialog-content apps-container">
+        <button class="dialog-close-btn" aria-label="Close dialog">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+        </button>
+
+        <div class="game-title">Close these resource-hungry apps to cool down:</div>
+        <div class="app-list" id="appList">
+            <!-- Apps will be populated here -->
+        </div>
+    </div>
+</div>
+    <footer>
+        Wardener - Keep your PC cool and your plant happy...<span style="margin-left: 10px;">
+    <button class="secondary-btn" id="shareBtn">Share Your Plant</button>
+    </footer>
+<!-- Add to HTML -->
+<audio id="waterSound" src="water-splash.mp3" preload="auto"></audio>
+<audio id="growthSound" src="growth-chime.mp3" preload="auto"></audio>
+<script src="script.js"></script>
+</body>
+</html>

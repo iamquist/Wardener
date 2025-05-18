@@ -1,0 +1,539 @@
+ :root {
+            --primary: #4CAF50;
+            --primary-dark: #388E3C;
+            --danger: #F44336;
+            --warning: #FFC107;
+            --background: #121212;
+            --card-bg: #1E1E1E;
+            --text: #E0E0E0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            flex: 1;
+            min-width: 300px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .plant-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 250px;
+            position: relative;
+        }
+
+        .pot {
+            width: 100px;
+            height: 60px;
+            background-color: #795548;
+            border-radius: 0 0 10px 10px;
+            position: absolute;
+            bottom: 0;
+            box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .plant {
+            position: relative;
+            bottom: -20px;
+            transition: all 0.5s ease;
+        }
+
+        .stem {
+            width: 8px;
+            height: 100px;
+            background-color: var(--primary);
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .leaf {
+            width: 30px;
+            height: 20px;
+            background-color: var(--primary-dark);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            position: absolute;
+        }
+
+        .leaf-1 {
+            top: 30px;
+            left: -20px;
+            transform: rotate(-30deg);
+        }
+
+        .leaf-2 {
+            top: 50px;
+            right: -20px;
+            transform: rotate(30deg);
+        }
+
+        .leaf-3 {
+            top: 70px;
+            left: -15px;
+            transform: rotate(-20deg);
+        }
+
+        .flower {
+            width: 25px;
+            height: 25px;
+            background-color: #FFEB3B;
+            border-radius: 50%;
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+        }
+
+        .stats {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .stat-label {
+            font-weight: 500;
+        }
+
+        .stat-value {
+            font-weight: 700;
+        }
+
+        .temp-value {
+            color: var(--primary);
+        }
+
+        .temp-warning {
+            color: var(--warning);
+        }
+
+        .temp-danger {
+            color: var(--danger);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--primary);
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+
+        .notification {
+            background-color: rgba(244, 67, 54, 0.2);
+            border-left: 4px solid var(--danger);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        button {
+            padding: 0.8rem 1.2rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex: 1;
+        }
+
+        .primary-btn {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .primary-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .secondary-btn {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .secondary-btn:hover {
+            background-color: rgba(76, 175, 80, 0.1);
+        }
+
+        .game-container {
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .game-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .app-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .app-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .close-btn {
+            background-color: var(--danger);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            margin-left: 30px;
+            
+        }
+        
+.plant-options {
+    margin-top: "";
+    display: flex;
+    gap: 1rem;
+}
+
+select {
+    background-color: var(--card-bg);
+    color: var(--text);
+    border: 1px solid var(--primary);
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+
+.achievements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.achievement {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.achievement-icon {
+    width: 24px;
+    height: 24px;
+    background-color: var(--warning);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.achievement.locked {
+    opacity: 0.5;
+}
+
+.achievement.locked .achievement-icon {
+    background-color: var(--text);
+}
+
+.chart-container {
+    width: 100%;
+    height: 200px;
+    margin-top: 1rem;
+}
+.light-mode {
+    --background: #f5f5f5;
+    --card-bg: #ffffff;
+    --text: #333333;
+}
+.notification.success {
+    background-color: rgba(76, 175, 80, 0.2);
+    border-left: 4px solid var(--primary);
+}
+
+.notification.warning {
+    background-color: rgba(255, 193, 7, 0.2);
+    border-left: 4px solid var(--warning);
+}
+.winter-theme {
+    --primary: #64B5F6;
+    --primary-dark: #42A5F5;
+}
+
+.winter-theme .plant {
+    /* Snow effects */
+    counter-reset: "";
+}
+@media (max-width: 768px) {
+    .dashboard {
+        flex-direction: column;
+    }
+    
+    .card {
+        min-width: 100%;
+    }
+    
+    .actions {
+        flex-direction: column;
+    }
+}
+        .water-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 10;
+            display: none;
+        }
+        .disease {
+    position: absolute;
+    color: var(--danger);
+    animation: shake 0.5s infinite;
+}
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+.night-mode {
+    --background: #0a0a1a;
+    --card-bg: #151530;
+}
+.night-mode .plant {
+    filter: brightness(0.7);
+}
+.rain {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('rain.png');
+    animation: rain 0.5s linear infinite;
+}
+
+        .water-drop {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: rgba(66, 165, 245, 0.7);
+            border-radius: 50%;
+            animation: fall 1.5s linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(150px);
+                opacity: 0;
+            }
+        }
+
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+
+
+        .dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.dialog-content {
+    max-width: 500px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.apps-containers {
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.dialog-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: var(--text);
+    opacity: 0.7;
+    transition: all 0.2s ease;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog-close-btn:hover {
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--danger);
+}
+
+.dialog-close-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.dialog-content {
+    position: relative; /* Needed for absolute positioning of close button */
+    padding-top: 2.5rem; /* Make space for the close button */
+}
+.chart-container {
+    width: 100%;
+    height: 200px;
+    margin-top: 1rem;
+}
+.achievements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.achievement {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.achievement-icon {
+    width: 24px;
+    height: 24px;
+    background-color: var(--warning);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.achievement.locked {
+    opacity: 0.5;
+}
+
+.achievement.locked .achievement-icon {
+    background-color: var(--text);
+}
